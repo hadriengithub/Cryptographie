@@ -7,10 +7,24 @@ def position(x):
 			if lettre == x:
 				return i
 			else:
-				i += 1	
+				i += 1
+
+def decalage(x,n):
+	if position(x) + n >= len(alphabet) - 1:
+		return alphabet[position(x) + n - len(alphabet)]
+	else:
+		return alphabet[position(x) + n]
+
+def codage(texte, n):
+	encoded_text = ''
+	for char in texte:
+		if char == ' ':
+			encoded_text += ' '
+		else:
+			encoded_text = encoded_text + decalage(char, n)
+	print('Non-encoded text : ', texte)
+	print('Encoded text : ', encoded_text)
 
 alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
-print("La position de la 1 dans l'alphabet est : ", position('1'))
-print("La position de la lettre a dans l'alphabet est : ", position('a'))
-print("la position de la lettre d dans l'alphabet est : ", position('d'))
+codage('hello world !', 3)
